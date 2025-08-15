@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .form-control {
+    @apply border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-1.5;
+  }
+}
+
+body {
+  font-family: "Roboto", sans-serif; /* Or your desired font stack */
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1)) /* #f9fafb */;
+}
