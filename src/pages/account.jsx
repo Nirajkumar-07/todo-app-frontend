@@ -83,7 +83,7 @@ export default function Account() {
     }
   }, []);
 
-  const handleCropImage = useCallback(() => {
+  const handleCropImage = useCallback((userProp, filename) => {
     if (!cropperRef.current) return;
 
     const canvas = cropperRef.current.getCroppedCanvas();
@@ -99,7 +99,7 @@ export default function Account() {
           });
           const file = new File(
             [compressedFile],
-            user.username + "-" + imageDialog.name,
+            userProp.username + "-" + filename,
             {
               type: "image/jpeg",
             }
@@ -116,7 +116,7 @@ export default function Account() {
         }
       })();
     }, "image/jpeg");
-  }, [user]);
+  }, []);
 
   const handleUpload = useCallback(async (event) => {
     const image = event.target.files[0];
@@ -262,7 +262,7 @@ export default function Account() {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={handleCropImage}
+                onClick={() => handleCropImage(user, imageDialog.name)}
               >
                 Crop
               </Button>
