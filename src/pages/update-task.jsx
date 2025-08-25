@@ -6,6 +6,7 @@ import history from "../lib/utils/history";
 import { ChevronLeft } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { updateStateTasks } from "../features/tasks/tasks";
+import Loader from "../components/loader";
 
 function UpdateTask() {
   const dispatch = useDispatch();
@@ -25,9 +26,7 @@ function UpdateTask() {
     dispatch(updateStateTasks(data));
   }, []);
   return loading ? (
-    <div className="w-full h-full flex justify-center items-center text-gray-300 text-3xl lg:text-6xl">
-      loading...
-    </div>
+    <Loader />
   ) : (
     <>
       <button

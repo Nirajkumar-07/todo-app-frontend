@@ -11,9 +11,12 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
+    updateUserImage: (state, action) => {
+      state.user.image = action.payload;
+    },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, updateUserImage } = userSlice.actions;
 export const selectUser = (state) => state.user.user;
 export default userSlice.reducer;

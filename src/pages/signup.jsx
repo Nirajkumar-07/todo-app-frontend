@@ -3,11 +3,12 @@ import { signup } from "../actions/auth.actions";
 import { Link, Navigate, useNavigate } from "react-router";
 import { Button, TextField } from "@mui/material";
 import PasswordTextField from "../components/ui/password-textfield";
+import Loader from "../components/loader";
 
 function Signup() {
   const token = sessionStorage.getItem("auth_token");
   if (token) return <Navigate to={"/dashboard"} />;
-  const [state, formAction] = useActionState(signup, undefined);
+  const [state, formAction, isPending] = useActionState(signup, undefined);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,6 +16,7 @@ function Signup() {
   });
   return (
     <div className="w-full h-screen flex justify-center items-center px-2 py-4">
+      {isPending && <Loader />}
       <div className="border rounded-md shadow-sm px-2 lg:px-4 py-4 w-full md:w-3/4 lg:max-w-[40rem]">
         <h2 className="uppercase text-2xl lg:text-3xl font-bold mb-4 text-center">
           Sign up

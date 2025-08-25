@@ -1,10 +1,11 @@
 import axios from "axios";
 import handleErrors from "../actions/common.action";
+import { BASE_URL } from "../api/axios-interceptor";
 
 export async function signin(body) {
   try {
     const res = await axios.post(
-      "https://todo-app-backend-rust-one.vercel.app/api/auth/signin",
+      BASE_URL + "api/auth/signin",
       JSON.stringify(body),
       {
         headers: {
@@ -31,7 +32,7 @@ export async function signin(body) {
 export async function signup(body) {
   try {
     const res = await axios.post(
-      "https://todo-app-backend-rust-one.vercel.app/api/auth/signup",
+      BASE_URL + "api/auth/signup",
       JSON.stringify(body),
       {
         headers: {

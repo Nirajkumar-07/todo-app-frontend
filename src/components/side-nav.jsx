@@ -19,11 +19,11 @@ export default function SideNav() {
         <div className="flex flex-col justify-between gap-2 content-start text-center pt-[3rem] h-full">
           <div className="w-full flex justify-center absolute top-[-2.5rem] place-self-center">
             <img
-              src={avatar}
+              src={user?.image || avatar}
               alt="avatar"
               height={50}
               width={50}
-              className="object-contain rounded-full cursor-pointer w-20 h-20"
+              className="object-contain rounded-full cursor-pointer w-20 h-20 border"
             />
           </div>
           <div className="w-full h-full overflow-y-auto flex flex-col">

@@ -50,11 +50,11 @@ function Header() {
                   <div className="grid justify-center content-start text-center">
                     <div className="w-full flex justify-center">
                       <img
-                        src={avatar}
+                        src={user?.image || avatar}
                         alt="avatar"
                         height={50}
                         width={50}
-                        className="object-contain rounded-full cursor-pointer w-20 h-20"
+                        className="object-contain rounded-full cursor-pointer w-20 h-20 border"
                       />
                     </div>
                     <h3 className="text-base font-semibold">
@@ -85,12 +85,15 @@ function Header() {
           </Sheet>
         </div>
         <div className="capitalize font-bold text-2xl lg:text-3xl tracking-wide lg:ps-24">
-          <span className="text-blue-400">
+          <span className="bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent">
+            {headerText}
+          </span>
+          {/* <span className="text-blue-400">
             {headerText.slice(0, Math.trunc(headerText.length / 2))}
           </span>
           <span className="text-blue-500">
             {headerText.slice(Math.trunc(headerText.length / 2))}
-          </span>
+          </span> */}
         </div>
       </div>
       <div className="max-lg:hidden">

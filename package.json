@@ -18,6 +18,8 @@
     "@mui/x-date-pickers": "^8.9.2",
     "@reduxjs/toolkit": "^2.8.2",
     "axios": "^1.10.0",
+    "browser-image-compression": "^2.0.2",
+    "cropperjs": "^1.6.2",
     "dayjs": "^1.11.13",
     "history": "^5.3.0",
     "lucide-react": "^0.525.0",

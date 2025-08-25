@@ -4,11 +4,12 @@ import { Link, Navigate, useNavigate } from "react-router";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { Eye } from "lucide-react";
 import PasswordTextField from "../components/ui/password-textfield";
+import Loader from "../components/loader";
 
 function Signin() {
   const token = sessionStorage.getItem("auth_token");
   if (token) return <Navigate to={"/dashboard"} />;
-  const [state, formAction] = useActionState(signin, undefined);
+  const [state, formAction, isPending] = useActionState(signin, undefined);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,6 +20,7 @@ function Signin() {
   }, [state]);
   return (
     <div className="w-full h-screen flex justify-center items-center px-2 py-4">
+      {isPending && <Loader />}
       <div className="border rounded-md shadow-sm px-2 lg:px-4 py-4 w-full md:w-3/4 lg:max-w-[40rem]">
         <h2 className="uppercase text-2xl lg:text-3xl font-bold mb-4 text-center">
           Welcome Back

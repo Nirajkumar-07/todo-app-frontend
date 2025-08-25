@@ -36,10 +36,12 @@ import {
   updateStateTasks,
   updateStateTaskStatus,
 } from "../features/tasks/tasks";
+import Loader from "./loader";
 
 function TaskList({ list, completed, today }) {
   const dispatch = useDispatch();
   const [dialogStyle, setDialogStyle] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [dialogData, setDialogData] = useState({
     taskId: null,
     status: null,
@@ -52,24 +54,29 @@ function TaskList({ list, completed, today }) {
   );
 
   const handleDeleteTask = useCallback(async (taskId) => {
+    setLoading(true);
     const res = await deleteTask(taskId);
     if (res.success) {
       setDialogStyle(null);
       setDialogData((e) => ({ ...e, taskId: null }));
       dispatch(deleteStateTask(taskId));
     }
+    setLoading(false);
   }, []);
 
   const handleUpdateTaskStatus = useCallback(async (taskId, status) => {
+    setLoading(true);
     const res = await updateTaskStatus(taskId, !status);
     if (res.success) {
       setDialogStyle(null);
       setDialogData((e) => ({ ...e, taskId: null, status: null }));
       dispatch(updateStateTaskStatus({ taskId: taskId, status: !status }));
     }
+    setLoading(false);
   }, []);
 
   const handleRedoTask = useCallback(async (taskId, formData) => {
+    setLoading(true);
     const dateTime = formData.get("dateTime");
     const body = {
       title: formData.get("title"),
@@ -84,6 +91,7 @@ function TaskList({ list, completed, today }) {
       setDialogData((e) => ({ ...e, taskId: null, form: null }));
       dispatch(updateStateTasks(res.data));
     }
+    setLoading(false);
   }, []);
 
   return (
@@ -235,6 +243,7 @@ function TaskList({ list, completed, today }) {
           </DialogContent>
         </Dialog>
       </div>
+      {loading && <Loader />}
       <div>
         <TableContainer component={Paper}>
           <Table stickyHeader size="small">

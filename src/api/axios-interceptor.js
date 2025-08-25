@@ -1,8 +1,11 @@
 import axios from "axios";
 import history from "../lib/utils/history";
 
+// export const BASE_URL = "http://localhost:8000/";
+export const BASE_URL = "https://todo-app-backend-rust-one.vercel.app/";
+
 const axiosInterceptor = axios.create({
-  baseURL: "https://todo-app-backend-rust-one.vercel.app/api/",
+  baseURL: BASE_URL + "api/",
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",
